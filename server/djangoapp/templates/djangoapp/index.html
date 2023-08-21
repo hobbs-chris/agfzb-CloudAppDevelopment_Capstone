@@ -26,8 +26,9 @@
     >
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="./about.html">About Us</a>
-          <a class="navbar-brand" href="./contact.html">Contact Us</a>
+          <a class="navbar-brand" href="{% url 'djangoapp:about' %}"
+            >Dealership Review</a
+          >
         </div>
         <ul class="nav navbar-nav navbar-right">
           {% if user.is_authenticated %}
@@ -43,11 +44,11 @@
           <li>
             <form
               class="form-inline"
-              action="{% url 'djangoapp:index' %}"
+              action="{% url 'djangoapp:login' %}"
               method="post"
             >
               {% csrf_token %}
-              <div>
+              <div class="input-group">
                 <input
                   type="text"
                   class="form-control"
@@ -57,13 +58,15 @@
                 <input
                   type="password"
                   class="form-control"
-                  placeholder="Password"
-                  name="password"
+                  placeholder="Username"
+                  name="psw"
                 />
                 <button class="btn btn-primary" type="submit">Login</button>
-                <a class="btn btn-link" href="djangoapp:registration">
-                  Sign Up
-                </a>
+                <a
+                  class="btn btn-link"
+                  href="{% url 'djangoapp:registration' %}"
+                  >Sign Up</a
+                >
               </div>
             </form>
           </li>
